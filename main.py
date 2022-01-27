@@ -1,11 +1,13 @@
-import BoardView, Controller, BoardModel
+import BoardView, Controller, BoardModel, InputUtil
 
 
 def main():
     
     view = BoardView.BoardView()
     model = BoardModel.BoardModel()
-    controller = Controller.Controller(model, view)
+    inputUtil = InputUtil.InputUtil()
+    controller = Controller.Controller(model, view, inputUtil)
     controller.startSession()
+
 
 main()
