@@ -15,11 +15,11 @@ class InputUtil:
             self.askToCustomiseBoard()
 
 
-    def getRows(self):
+    def askForRows(self):
         return int(input("Enter number of rows: "))
 
 
-    def getCols(self):
+    def askForCols(self):
         return int(input("Enter number of Columns: "))
 
 
