@@ -1,5 +1,3 @@
-import BoardModel
-
 class BoardView:
 
 
