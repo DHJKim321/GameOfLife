@@ -9,5 +9,4 @@ def main():
     controller = Controller.Controller(model, view, inputUtil)
     controller.startSession()
 
-
 main()
