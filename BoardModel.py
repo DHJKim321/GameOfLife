@@ -54,12 +54,9 @@ class BoardModel:
         for _i in range(i - 1, i + 2):
             if _i >= 0 and _i < self.height:
                 for _j in range(j - 1, j + 2):
-                    if self.getCell(_i, _j) == "0" and (_j >= 0 and _j < self.width) and [i, j] != [_i, _j]:
+                    if (_j >= 0 and _j < self.width) and self.getCell(_i, _j) == "0" and [i, j] != [_i, _j]:
                         live_neighbours += 1
-        if live_neighbours <= 0:
-            return 0
-        else:
-            return live_neighbours
+        return live_neighbours
 
 
     def returnDeadNeighbours(self, i, j):
@@ -67,9 +64,20 @@ class BoardModel:
         for _i in range(i - 1, i + 2):
             if _i >= 0 and _i < self.height:
                 for _j in range(j - 1, j + 2):
-                    if self.getCell(_i, _j) == "." and (_j >= 0 and _j < self.width) and [i, j] != [_i, _j]:
+                    if (_j >= 0 and _j < self.width) and self.getCell(_i, _j) == "." and [i, j] != [_i, _j]:
                         dead_neighbours += 1
-        if dead_neighbours <= 0:
-            return 0
-        else:
-            return dead_neighbours
+        return dead_neighbours
+
+
+    def checkUnderPopulation(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.returnLivingNeighbours(i, j) < 2:
+                    self.killCell(i, j)
+
+    
+    def isBoardEmpty(self):
+        for row in self.board:
+            if row.count("0") != 0:
+                return False
+        return True
