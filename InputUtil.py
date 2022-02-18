@@ -24,6 +24,10 @@ class InputUtil:
 
 
     def askToSetCell(self):
-        i = int(input("Enter row: "))
-        j = int(input("Enter column: "))
+        i = int(input("Enter row of new cell: "))
+        j = int(input("Enter column of new cell: "))
         return [i, j]
+
+    
+    def setMoreCells(self):
+        return input("Set more cells? (Y/N): ")
