@@ -76,6 +76,13 @@ class BoardModel:
                     self.killCell(i, j)
 
     
+    def checkOverPopulation(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.returnLivingNeighbours(i, j) > 3:
+                    self.killCell(i, j)
+
+    
     def isBoardEmpty(self):
         for row in self.board:
             if row.count("0") != 0:

@@ -26,6 +26,7 @@ class Controller:
         self.view.printBoard(self.model.width, self.model.height, self.model.board)
         while not self.model.isBoardEmpty():
             self.model.checkUnderPopulation()
+            self.model.checkOverPopulation()
             self.view.printBoard(self.model.width, self.model.height, self.model.board)
         
 
