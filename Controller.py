@@ -16,6 +16,17 @@ class Controller:
             self.model.setWidthAndHeight(col, row)
         self.model.initCells()
         self.view.printBoard(self.model.width, self.model.height, self.model.board)
+        setMore = "y"
+        while setMore.lower() == "y":
+            cell = self.inputUtil.askToSetCell()
+            i = cell[0]
+            j = cell[1]
+            self.model.reviveCell(i, j)
+            setMore = self.inputUtil.setMoreCells()
+        self.view.printBoard(self.model.width, self.model.height, self.model.board)
+        while not self.model.isBoardEmpty():
+            self.model.checkUnderPopulation()
+            self.view.printBoard(self.model.width, self.model.height, self.model.board)
         
 
     
