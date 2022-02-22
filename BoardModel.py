@@ -48,6 +48,9 @@ class BoardModel:
     def getNewDeadCells(self):
         return self.new_dead_cells
 
+    def isDead(self, i, j):
+        return self.getCell(i, j) == "."
+
     
     def returnLivingNeighbours(self, i, j):
         live_neighbours = 0
@@ -81,6 +84,19 @@ class BoardModel:
             for j in range(self.width):
                 if self.returnLivingNeighbours(i, j) > 3:
                     self.killCell(i, j)
+
+    
+    def checkReproduction(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.isDead(i, j) and self.returnLivingNeighbours(i, j) == 3:
+                    self.reviveCell(i, j)
+
+    
+    def checkAllRules(self):
+        self.checkOverPopulation()
+        self.checkUnderPopulation()
+        self.checkReproduction()
 
     
     def isBoardEmpty(self):
